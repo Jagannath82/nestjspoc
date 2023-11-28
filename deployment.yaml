@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjspoc
+  namespace: my-eks-namespace
+  labels:
+    app: nestjspoc
+spec:
+  selector:
+    matchLabels:
+      app: nestjspoc
+  template:
+    metadata:
+      labels:
+        app: nestjspoc
+    spec:
+      containers:
+      - name: nestjspoc
+        image: 405755591353.dkr.ecr.us-east-2.amazonaws.com/jg-nestjs-demo:latest
+        env:
+        - name: NODE_ENV
+          value: "dev"
+        - name: LOG_LEVEL
+          value: "info"
+        - name: TODO_URI
+          value: "https://jsonplaceholder.typicode.com/todos"
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+      serviceAccountName: default
