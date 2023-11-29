@@ -5,6 +5,7 @@ import { TodoModule } from './todo/todo.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { WinstonModule } from 'nest-winston';
+import { KafkaModule } from './kafka/kafka.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { WinstonModule } from 'nest-winston';
     AuthorizationModule,
     ConfigModule.forRoot(),
     WinstonModule,
+    KafkaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
