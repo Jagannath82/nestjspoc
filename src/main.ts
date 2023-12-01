@@ -4,6 +4,7 @@ import { SWAGGER_CONFIG } from './swagger.config';
 import { SwaggerModule } from '@nestjs/swagger';
 import { WinstonModule } from 'nest-winston';
 import { WINSTON_LOGGER_INSTANCE } from './winston.config';
+//import { ValidationPipe } from '@nestjs/common';
 
 
 
@@ -14,6 +15,7 @@ async function bootstrap() {
   app.enableCors();
   const document = SwaggerModule.createDocument(app, SWAGGER_CONFIG);
   SwaggerModule.setup('root', app, document);
+  //app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
 }
 bootstrap();
